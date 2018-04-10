@@ -1,6 +1,6 @@
 <?php
 
-class databaseConnect
+class databaseConnect extends PDO
 {
 
     public $db;
