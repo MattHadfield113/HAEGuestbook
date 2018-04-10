@@ -14,7 +14,7 @@ class databaseConnect
         $database_password = DatabasePassword;
         $database_name = DatabaseName;
 
-        $this->db = new PDO("mysql:host=$database_host;dbname=$database_name", $database_username, $database_password);
+        $this->db = PDO("mysql:host=$database_host;dbname=$database_name", $database_username, $database_password);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 
