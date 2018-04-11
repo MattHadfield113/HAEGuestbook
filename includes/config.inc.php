@@ -8,7 +8,10 @@
  */
 
 //Database Host
-define('DatabaseHost','hm86340-001.dbaas.ovh.net:35237');
+define('DatabaseHost','hm86340-001.dbaas.ovh.net');
+
+//Database Port
+define('DatabasePort','35237');
 
 //Database Username
 define('DatabaseUsername','HAETest');
@@ -18,3 +21,4 @@ define('DatabasePassword','HAETest123');
 
 //Database Name
 define('DatabaseName','HAETest');
+
