@@ -2,7 +2,8 @@
 
 // Lets check see if this user is an admin
 
-$loggedin = 1;
+$user = new User();
+$loggedin = $user->logged_in();
 
 if($loggedin == NULL) {
     $page_title = "Not Authorised";

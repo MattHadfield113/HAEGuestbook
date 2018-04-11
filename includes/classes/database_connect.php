@@ -1,7 +1,5 @@
 <?php
 
-use PDO;
-
 class databaseConnect
 {
 
@@ -41,7 +39,7 @@ class databaseConnect
     public function Get_All_Posts()
     {
 
-      return $this->db->query('SELECT * FROM guestbook')->fetchAll(PDO::FETCH_CLASS, "databaseConnect");
+      return $this->db->query('SELECT * FROM guestbook WHERE post_approved = 1')->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
@@ -50,9 +48,18 @@ class databaseConnect
 
     }
 
-    public function Create_Post()
+    public function Create_Post($data)
     {
 
+        $filtered_name = filter_var($data["post_by"], FILTER_SANITIZE_STRING);
+        $filtered_content = filter_var($data["post_content"], FILTER_SANITIZE_STRING);
+        $filtered_title = filter_var($data["post_title"], FILTER_SANITIZE_STRING);
+
+       $thepost = $this->db->prepare("INSERT INTO guestbook (post_by,post_title,post_content) VALUES (:post_by,:post_title,:post_content)");
+        $thepost->bindParam(':post_by',$filtered_name);
+        $thepost->bindParam(':post_title',$filtered_title);
+        $thepost->bindParam(':post_content',$filtered_content);
+        $thepost->execute();
     }
 
     public function Edit_Post($id)
@@ -61,9 +68,9 @@ class databaseConnect
 
     }
 
-    private function __destruct()
+    public function __destruct()
     {
-
+        $this->db = NULL;
     }
 
 
