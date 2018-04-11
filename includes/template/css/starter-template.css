@@ -1,0 +1,14 @@
+body {
+  padding-top: 4rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.post {
+  background: aliceblue;
+  margin: 10px 10px 0 0;
+  border: 1px solid #000;
+  padding: 10px;
+}
