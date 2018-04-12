@@ -80,9 +80,6 @@ else {
         $page_title = "Post ID " . $ID . " Disapproved";
         $database->Disapprove_Post($ID);
     }
-    elseif ($admin_action == "edit_post_submit") {
-        $database->Edit_Post($_REQUEST);
-    }
     else {
         $page_title = "Error";
         $content = "Action Not Found";
