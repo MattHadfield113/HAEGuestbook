@@ -6,11 +6,6 @@ class User extends databaseConnect
     public $page_title;
     public $content;
 
-    public function hash_password($password = "test")
-    {
-        $this->content = password_hash($password, PASSWORD_DEFAULT);
-    }
-
     public function logged_in()
     {
         session_start();
