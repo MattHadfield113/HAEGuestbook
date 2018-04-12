@@ -16,6 +16,10 @@ if ($action == NULL) {
 elseif ($action == "submit_post") {
     $database->Create_Post($_REQUEST);
 }
+elseif ($action == "edit_post") {
+    $database->Edit_Post($_REQUEST);
+}
+
 else {
     if(file_exists("includes/template/" . $action . ".php"))
     {

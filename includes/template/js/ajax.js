@@ -37,7 +37,7 @@ $(function() {
             // AJAX code to submit form.
             $.ajax({
                 type: "POST",
-                url: "/?action=admin&admin_action=edit_post_submit",
+                url: "/?action=edit_post",
                 data: data,
                 success: function(html) {
                     alert("Post Edited");
