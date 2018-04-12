@@ -1,0 +1,2 @@
+INSERT INTO HAETest.guestbook (id, post_approved, post_by, post_title, post_content) VALUES (1, 1, 'Bob Smith', 'Greetings From San Francisco', 'Hi, My name is Bob, and i approve this message t');
+INSERT INTO HAETest.guestbook (id, post_approved, post_by, post_title, post_content) VALUES (2, 1, 'Ivor', 'Im Ivor', 'I work here');

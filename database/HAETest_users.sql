@@ -1,0 +1,1 @@
+INSERT INTO HAETest.users (id, username, password, email) VALUES (1, 'MattHadfield', '$2y$10$ivW8BxO3ciFfB1.6osm9auD2BjFxXUGSSCHV5K6aA/PqXK3.cSPQO', 'matty.hadfield113@gmail.com');
