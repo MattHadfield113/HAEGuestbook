@@ -39,13 +39,42 @@ class databaseConnect
     public function Get_All_Posts()
     {
 
-      return $this->db->query('SELECT * FROM guestbook WHERE post_approved = 1')->fetchAll(PDO::FETCH_ASSOC);
+      return $this->db->query('SELECT * FROM guestbook')->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
-    public function Get_Single_Post($id)
+    public function Get_Approved_Posts()
     {
 
+        return $this->db->query('SELECT * FROM guestbook WHERE post_approved = 1')->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
+    public function Delete_Post($id)
+    {
+        $sql = "DELETE FROM guestbook WHERE id=" . $id;
+        $this->db->exec($sql);
+    }
+
+    public function Approve_Post($id)
+    {
+        $sql = "UPDATE guestbook SET post_approved='1' WHERE id=" . $id;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+    }
+
+
+    public function Disapprove_Post($id)
+    {
+        $sql = "UPDATE guestbook SET post_approved='0' WHERE id=" . $id;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+    }
+
+
+    public function Get_Single_Post($id)
+    {
+        return $this->db->query('SELECT * FROM guestbook WHERE id = "' . $id .  '"')->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function Create_Post($data)
@@ -62,9 +91,15 @@ class databaseConnect
         $thepost->execute();
     }
 
-    public function Edit_Post($id)
+    public function Edit_Post($data)
     {
 
+        $filtered_name = filter_var($data["post_by"], FILTER_SANITIZE_STRING);
+        $filtered_content = filter_var($data["post_content"], FILTER_SANITIZE_STRING);
+        $filtered_title = filter_var($data["post_title"], FILTER_SANITIZE_STRING);
+
+        $thepost = $this->db->prepare("UPDATE guestbook SET post_by='" . $filtered_name . "',post_content='" . $filtered_content ."',post_title='" . $filtered_title . "'WHERE id='" . $data["id"] . "'");
+        $thepost->execute();
 
     }
 

@@ -4,7 +4,7 @@ $page_title = "Posts by our Guests";
 
 $content = "";
 
-foreach ($database->Get_All_Posts() as $Post) {
+foreach ($database->Get_Approved_Posts() as $Post) {
     $content.= "<div class='post'>";
     $content.= "<h2>" . $Post["post_title"] . "</h2>";
     $content.= "<h5>By " . $Post["post_by"] . "</h5>";
